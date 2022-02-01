@@ -27,8 +27,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo Steven Test Run
         
+  
       - name: Configure AWS credentials
         id: creds
         uses: aws-actions/configure-aws-credentials@v1
@@ -36,4 +37,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ github.event.inputs.region }}
+          
+      - name: AWS CloudFormation "Deploy CloudFormation Stack" Action for GitHub Actions
+        uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
 
