@@ -45,21 +45,21 @@ jobs:
           \"region\":\"us-east-2\"\
           }”
           
-          AMPLIFY=”{\
-          \”projectName\”:\”SecondChance\”,\
-          \”envName\”:\”staging\”,\
-          \”defaultEditor\”:\”code\”\
-          }”
+          AMPLIFY=”'{\
+          \”appId\”:\”d30wx1kvbjtgdy\”,\
+          \”envName\”:\”staging\”\
+          }'”
 
           
-          PROVIDERS=”{\
+          PROVIDERS=”'{\
           \”awscloudformation\”:$AWSCLOUDFORMATIONCONFIG\
-          }”
+          }'”
           
           
-          amplify pull --appId d30wx1kvbjtgdy --envName staging \
+          amplify pull \
           --amplify $AMPLIFY \
-          --providers $PROVIDERS
+          --providers $PROVIDERS \
+          --yes
           
           flutter pub get
           flutter build apk
