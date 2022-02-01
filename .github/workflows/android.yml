@@ -56,11 +56,10 @@ jobs:
           \”awscloudformation\”:$AWSCLOUDFORMATIONCONFIG\
           }”
           
-          amplify configure project \
+          
+          amplify pull --appId d30wx1kvbjtgdy --envName staging \
           --amplify $AMPLIFY \
           --providers $PROVIDERS
-          
-          amplify pull --appId d30wx1kvbjtgdy --envName staging
           
           flutter pub get
           flutter build apk
