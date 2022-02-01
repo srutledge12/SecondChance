@@ -35,31 +35,8 @@ jobs:
       - run: |
       
           npm install -g @aws-amplify/cli
-          
-          AWSCLOUDFORMATIONCONFIG=”{\
-          \”configLevel\”:\”project\”,\
-          \”useProfile\”:true,\
-          \”profileName\”:\”default\”,\
-          \"accessKeyId\":\"${{ secrets.AWS_ACCESS_KEY_ID }}\",\
-          \"secretAccessKey\":\"${{ secrets.AWS_SECRET_ACCESS_KEY }}\",\
-          \"region\":\"us-east-2\"\
-          }”
-          
-          AMPLIFY=”'{\
-          \”appId\”:\”d30wx1kvbjtgdy\”,\
-          \”envName\”:\”staging\”\
-          }'”
 
-          
-          PROVIDERS=”'{\
-          \”awscloudformation\”:$AWSCLOUDFORMATIONCONFIG\
-          }'”
-          
-          
-          amplify pull \
-          --amplify $AMPLIFY \
-          --providers $PROVIDERS \
-          --yes
+          ./amplify.sh --appid d30wx1kvbjtgdy --envName staging --accessKey ${{ secrets.AWS_ACCESS_KEY_ID }} --secretKey ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           
           flutter pub get
           flutter build apk
