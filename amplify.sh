@@ -5,7 +5,7 @@ args=("$@")
 
 appId=""
 envName=""
-useProfile="true"
+useProfile="false"
 profileName="default"
 accessKey=""
 secretKey=""
@@ -31,6 +31,7 @@ AWSCLOUDFORMATIONCONFIG="{\
 \"useProfile\":${useProfile},\
 \"accessKeyId\":\"${accessKey}\",\
 \"secretAccessKey\":\"${secretKey}\",\
+\"region\":\"us-east-2\",\
 \"profileName\":\"${profileName}\"\
 }"
 AMPLIFY="'{\
