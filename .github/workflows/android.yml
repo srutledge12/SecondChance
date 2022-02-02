@@ -34,13 +34,13 @@ jobs:
           flutter-version: '2.8.1'
       - shell: bash
         env:
-          ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
       
           npm install -g @aws-amplify/cli
 
-          ./amplify.sh --appid d30wx1kvbjtgdy --envName staging --accessKey $ACCESS_KEY --secretKey $SECRET_KEY
+          ./amplify.sh --appid d30wx1kvbjtgdy --envName staging --accessKey "$AWS_ACCESS_KEY_ID" --secretKey "$AWS_SECRET_ACCESS_KEY"
           
           flutter pub get
           flutter build apk
