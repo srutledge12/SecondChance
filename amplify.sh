@@ -6,7 +6,7 @@ args=("$@")
 
 appId=""
 envName=""
-useProfile="true"
+useProfile="false"
 profileName="default"
 accessKey=""
 secretKey=""
