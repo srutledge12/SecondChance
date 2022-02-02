@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 IFS='|'
 args=("$@")
@@ -29,12 +30,13 @@ done
 AWSCLOUDFORMATIONCONFIG="{\
 \"configLevel\":\"project\",\
 \"useProfile\":${useProfile},\
-\"accessKeyId\":${accessKey},\
-\"secretAccessKey\":${secretKey},\
+\"accessKeyId\":\"${accessKey}\",\
+\"secretAccessKey\":\"${secretKey}\",\
 \"profileName\":\"${profileName}\"\
 }"
 AMPLIFY="'{\
 \"appId\":\"${appId}\",\
+\"defaultEditor\":\"code\",\
 \"envName\":\"${envName}\"\
 }'"
 PROVIDERS="'{\
