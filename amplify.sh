@@ -1,11 +1,12 @@
 #!/bin/bash
+
 set -e
 IFS='|'
 args=("$@")
 
 appId=""
 envName=""
-useProfile="false"
+useProfile="true"
 profileName="default"
 accessKey=""
 secretKey=""
@@ -31,18 +32,27 @@ AWSCLOUDFORMATIONCONFIG="{\
 \"useProfile\":${useProfile},\
 \"accessKeyId\":\"${accessKey}\",\
 \"secretAccessKey\":\"${secretKey}\",\
-\"region\":\"us-east-2\",\
 \"profileName\":\"${profileName}\"\
 }"
 AMPLIFY="'{\
 \"appId\":\"${appId}\",\
-\"defaultEditor\":\"code\",\
+\"defaultEditor\":\"android studio\",\
 \"envName\":\"${envName}\"\
 }'"
 PROVIDERS="'{\
 \"awscloudformation\":$AWSCLOUDFORMATIONCONFIG\
 }'"
 
-cmd="amplify pull --providers ${PROVIDERS} --amplify ${AMPLIFY} --yes"
+CONFIG="{\
+\"SourceDir\":\"lib\",\
+\"ResDir\":\"lib\",\
+\"DistributionDir\":\"build\"\
+}"
+
+FRONTEND="'{\
+\"frontend\":\"flutter\",\
+\"config\":$CONFIG\
+}'"
+cmd="amplify pull --providers ${PROVIDERS} --amplify ${AMPLIFY} --frontend ${FRONTEND} --yes"
 echo $cmd
 eval $cmd
