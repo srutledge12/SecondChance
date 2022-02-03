@@ -17,7 +17,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       
       # Setup the environment
@@ -33,7 +33,7 @@ jobs:
         with:
           flutter-version: '2.8.1'
       
-      # Build the ios artifacts
+      # Build the android artifacts
       - name: Build Artifacts
         shell: bash
         env:
@@ -46,6 +46,14 @@ jobs:
           
           flutter pub get
           flutter build ios
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios-builds
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/flutter-apk/
       
 
   
