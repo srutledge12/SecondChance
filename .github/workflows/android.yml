@@ -51,7 +51,7 @@ jobs:
           flutter build apk --split-per-abi
       
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: android-builds
           path: |
