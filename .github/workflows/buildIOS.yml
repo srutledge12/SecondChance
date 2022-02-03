@@ -1,0 +1,51 @@
+name: CI IOS
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the Lucas branch
+  push:
+    branches: [ Steven ]
+  pull_request:
+    branches: [ Steven ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # android build job
+  build:
+    # The type of runner that the job will run on
+    
+    runs-on: ubuntu-latest
+    steps:
+      
+      # Setup the environment
+      - name: Setup Checkout
+        uses: actions/checkout@v2  
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.8.1'
+      
+      # Build the ios artifacts
+      - name: Build Artifacts
+        shell: bash
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # Install Amplify, download remote backend configuration, build the flutter release
+        run: |
+          npm install -g @aws-amplify/cli
+          ./amplify.sh --appid d30wx1kvbjtgdy --envName staging --accessKey "$AWS_ACCESS_KEY_ID" --secretKey "$AWS_SECRET_ACCESS_KEY"
+          
+          flutter pub get
+          flutter build ios
+      
+
+  
