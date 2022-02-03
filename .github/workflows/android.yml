@@ -15,15 +15,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # android build job
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
@@ -36,11 +32,23 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # Install Amplify, download remote backend configuration, build the flutter release
         run: |
-      
           npm install -g @aws-amplify/cli
-
           ./amplify.sh --appid d30wx1kvbjtgdy --envName staging --accessKey "$AWS_ACCESS_KEY_ID" --secretKey "$AWS_SECRET_ACCESS_KEY"
           
           flutter pub get
-          flutter build apk
+          flutter build appbundle
+          flutter build apk --split-per-abi
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: android-builds
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/flutter-apk/
+  
+  # release build artifacts        
+  # TODO
+          
+      
