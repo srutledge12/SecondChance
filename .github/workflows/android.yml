@@ -35,8 +35,8 @@ jobs:
         with:
           flutter-version: '2.8.1'
       - name: Setup Amplify
-        uses: ambientlight/amplify-cli-action@0.3.0
-      
+        shell: bash
+        run: npm install -g @aws-amplify/cli@4.3.14
       # Build the android artifacts
       - name: Build Artifacts
         shell: bash
