@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'amplify.dart';
 
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'amplifyconfiguration.dart';
+import 'models/ModelProvider.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:amplify_datastore/amplify_datastore.dart';
+
 void main() {
   runApp(const MyApp());
 }

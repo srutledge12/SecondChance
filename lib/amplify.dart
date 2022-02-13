@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'amplifyconfiguration.dart';
 import 'login_screen.dart';
+import 'models/ModelProvider.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:amplify_datastore/amplify_datastore.dart';
 
 class AmplifyState {
   bool isAmplifyConfigured = false;
   bool loggedIn = false;
+  final AmplifyDataStore _amplifyDataStore =  AmplifyDataStore(modelProvider: ModelProvider.instance,);
 
 
   void verifyLogin(BuildContext context, AmplifyState amplifyState) async {
@@ -29,11 +34,20 @@ class AmplifyState {
       return;
     }
   }
+ 
   void configureAmplify() async {
 
     // Add Pinpoint and Cognito Plugins, or any other plugins you want to use
     AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
-    await Amplify.addPlugins([authPlugin]);
+    AmplifyDataStore datastorePlugin =
+            AmplifyDataStore(modelProvider: ModelProvider.instance);
+    
+    await Amplify.addPlugins([
+      datastorePlugin, 
+      authPlugin,
+      // AmplifyAPI(),
+      AmplifyStorageS3()
+      ]);
     debugPrint("after adding authPlugin");
     // Once Plugins are added, configure Amplify
     // Note: Amplify can only be configured once.

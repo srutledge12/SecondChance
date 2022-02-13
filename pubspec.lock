@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2"
+  amplify_datastore:
+    dependency: "direct main"
+    description:
+      name: amplify_datastore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.2"
   amplify_datastore_plugin_interface:
     dependency: transitive
     description:
@@ -54,6 +61,13 @@ packages:
     dependency: transitive
     description:
       name: amplify_storage_plugin_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.2"
+  amplify_storage_s3:
+    dependency: "direct main"
+    description:
+      name: amplify_storage_s3
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2"

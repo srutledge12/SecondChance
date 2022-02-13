@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-secondchance-staging-205520-authRole",
+      "UnauthRoleArn": "arn:aws:iam::902588210888:role/amplify-secondchance-staging-205520-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::902588210888:role/amplify-secondchance-staging-205520-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-secondchance-staging-205520-deployment",
+      "UnauthRoleName": "amplify-secondchance-staging-205520-unauthRole",
+      "StackName": "amplify-secondchance-staging-205520",
+      "StackId": "arn:aws:cloudformation:us-east-2:902588210888:stack/amplify-secondchance-staging-205520/1a5ef3e0-82d8-11ec-af84-0655c8411a04",
+      "AmplifyAppId": "d30wx1kvbjtgdy"
+    },
+    "categories": {
+      "auth": {
+        "SecondChance": {}
+      }
+    }
+  }
+}

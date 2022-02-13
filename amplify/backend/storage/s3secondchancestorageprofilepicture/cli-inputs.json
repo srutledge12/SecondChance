@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3secondchancestorageprofilepicture",
+  "bucketName": "secondchance-storage-profile-picture",
+  "policyUUID": "d3e1ab4d",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
